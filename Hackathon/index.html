@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyGen - Smart Study Schedule Generator</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div style="color: white; text-align: center;">
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">StudyGen</h1>
+    <p style="font-size: 1.2rem;">Loading...</p>
+  </div>
+  <script>
+    window.onload = function() {
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        window.location.href = 'HTML/dashboard.html';
+      } else {
+        window.location.href = 'HTML/login.html';
+      }
+    };
+  </script>
+</body>
+</html>

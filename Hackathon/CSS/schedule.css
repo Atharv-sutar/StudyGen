@@ -1,0 +1,378 @@
+/* Schedule Task Page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e2e;
+    color: #f8f8f2;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    background-color: #282a36;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+.sidebar .logo {
+    font-size: 1.8rem;
+    color: #ff79c6;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sidebar .menu {
+    list-style: none;
+    width: 100%;
+    flex: 1;
+}
+
+.sidebar .menu li {
+    margin: 10px 0;
+}
+
+.sidebar .menu a {
+    display: block;
+    padding: 12px 15px;
+    color: #f8f8f2;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.sidebar .menu a:hover {
+    background-color: #44475a;
+    color: #ff79c6;
+    padding-left: 20px;
+}
+
+.sidebar .menu a.active {
+    background-color: #ff79c6;
+    color: #282a36;
+    font-weight: bold;
+}
+
+.schedule-task {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d47 100%);
+}
+
+.dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dashboard-header h2 {
+    font-size: 2.2rem;
+    color: #ff79c6;
+    margin-bottom: 8px;
+}
+
+.dashboard-header p {
+    color: #b0b0b0;
+    font-size: 1rem;
+}
+
+.task-form {
+    background-color: #323646;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #44475a;
+}
+
+.task-form h3 {
+    color: #ff79c6;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+#add-task-form {
+    display: grid;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: #f8f8f2;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px;
+    background-color: #44475a;
+    border: 2px solid #555869;
+    border-radius: 8px;
+    color: #f8f8f2;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff79c6;
+    background-color: #555869;
+}
+
+.btn-add-task {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #ff79c6 0%, #f1fa8c 100%);
+    color: #282a36;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add-task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 121, 198, 0.4);
+}
+
+.task-list {
+    background-color: #323646;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #44475a;
+}
+
+.task-list h3 {
+    color: #ff79c6;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.task-card {
+    background-color: #44475a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #555869;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.task-card:hover {
+    border-color: #ff79c6;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 121, 198, 0.2);
+}
+
+.task-card.completed {
+    opacity: 0.7;
+    border-color: #50fa7b;
+}
+
+.task-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.task-card-header h3 {
+    color: #f8f8f2;
+    font-size: 1.1rem;
+    margin: 0;
+    word-break: break-word;
+}
+
+.task-priority {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.task-priority.high {
+    background-color: #ff5555;
+    color: #fff;
+}
+
+.task-priority.medium {
+    background-color: #f1fa8c;
+    color: #282a36;
+}
+
+.task-priority.low {
+    background-color: #50fa7b;
+    color: #282a36;
+}
+
+.task-subject {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin: 8px 0;
+}
+
+.task-description {
+    color: #d0d0d0;
+    font-size: 0.9rem;
+    margin: 8px 0;
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-date {
+    color: #8be9fd;
+    font-size: 0.85rem;
+    margin: 8px 0;
+}
+
+.task-time {
+    color: #b0b0b0;
+    font-size: 0.85rem;
+    margin: 8px 0;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 70px;
+}
+
+.btn-edit {
+    background-color: #8be9fd;
+    color: #282a36;
+    font-weight: bold;
+}
+
+.btn-edit:hover {
+    background-color: #50fa7b;
+}
+
+.btn-toggle {
+    background-color: #50fa7b;
+    color: #282a36;
+    font-weight: bold;
+}
+
+.btn-toggle:hover {
+    background-color: #8be9fd;
+}
+
+.btn-delete {
+    background-color: #ff5555;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-delete:hover {
+    background-color: #ff79c6;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ff79c6;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.no-tasks {
+    text-align: center;
+    color: #b0b0b0;
+    padding: 30px;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        transition: max-height 0.3s ease;
+    }
+
+    .sidebar.active {
+        max-height: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .schedule-task {
+        padding: 15px;
+        flex: 1;
+    }
+
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .task-form {
+        padding: 15px;
+    }
+
+    #add-task-form {
+        gap: 10px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.8rem;
+    }
+}

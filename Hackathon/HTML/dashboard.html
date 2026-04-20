@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - StudyGen</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="container">
+    <nav class="sidebar" id="sidebar">
+      <h1 class="logo">StudyGen</h1>
+      <ul class="menu">
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="schedule.html">Schedule Task</a></li>
+        <li><a href="study-material.html">Study Material</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
+    </nav>
+
+    <main class="dashboard">
+      <header class="dashboard-header">
+        <h2>Welcome, Student!</h2>
+        <p>Track your progress and plan your studies efficiently.</p>
+      </header>
+
+      <section class="tasks">
+        <div class="section-header">
+          <h3>Your Tasks</h3>
+          <select id="task-sort-select" class="sort-select">
+            <option value="date">Sort by Date</option>
+            <option value="priority">Sort by Priority</option>
+            <option value="status">Sort by Status</option>
+          </select>
+        </div>
+        <ul id="dashboard-tasks">
+          <li>Loading tasks...</li>
+        </ul>
+        <a href="schedule.html" class="btn-link">Manage Tasks →</a>
+      </section>
+
+      <section class="calendar">
+        <h3>Calendar</h3>
+        <iframe src="https://calendar.google.com/calendar/embed?src=en.indian%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKolkata" style="border: 0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+      </section>
+
+      <section class="progress">
+        <h3>Today's Progress</h3>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="today-progress" style="width: 0%;">0%</div>
+        </div>
+        <p class="progress-text" id="progress-text">Loading...</p>
+      </section>
+
+      <section class="subject-progress">
+        <h3>Subject Progress</h3>
+        <div id="subject-breakdown">
+          <p class="loading">Loading subjects...</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../Javascript/auth.js"></script>
+  <script src="../Javascript/dashboard.js"></script>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

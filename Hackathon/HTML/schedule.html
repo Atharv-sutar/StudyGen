@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Task - StudyGen</title>
+  <link rel="stylesheet" href="../CSS/schedule.css">
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="container">
+    <nav class="sidebar" id="sidebar">
+      <h1 class="logo">StudyGen</h1>
+      <ul class="menu">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="schedule.html" class="active">Schedule Task</a></li>
+        <li><a href="study-material.html">Study Material</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
+    </nav>
+
+    <main class="schedule-task">
+      <header class="dashboard-header">
+        <h2>Schedule Your Tasks</h2>
+        <p>Plan your tasks to stay organized and efficient.</p>
+      </header>
+
+      <section class="task-form">
+        <h3>Add a New Task</h3>
+        <form id="add-task-form">
+          <div class="form-group">
+            <label for="task-title">Task Title:</label>
+            <input type="text" id="task-title" name="task-title" placeholder="Enter task title" required>
+          </div>
+
+          <div class="form-group">
+            <label for="task-subject">Subject:</label>
+            <select id="task-subject" name="task-subject" required>
+              <option value="">Select a subject</option>
+              <option value="Physics">Physics</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Biology">Biology</option>
+              <option value="History">History</option>
+              <option value="Geography">Geography</option>
+              <option value="English">English</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="task-description">Description:</label>
+            <textarea id="task-description" name="task-description" placeholder="Enter task description" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="task-date">Due Date:</label>
+            <input type="date" id="task-date" name="task-date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="task-priority">Priority:</label>
+            <select id="task-priority" name="task-priority" required>
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="task-duration">Duration (hours):</label>
+            <input type="number" id="task-duration" name="task-duration" placeholder="Estimated hours" min="0.5" step="0.5" value="1" required>
+          </div>
+
+          <button type="submit" class="btn-add-task">Add Task</button>
+        </form>
+      </section>
+
+      <section class="task-list">
+        <h3>Scheduled Tasks</h3>
+        <div id="task-grid" class="task-grid">
+          <p class="no-tasks">No tasks yet. Create one to get started!</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../Javascript/auth.js"></script>
+  <script src="../Javascript/schedule.js"></script>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - StudyGen</title>
+  <link rel="stylesheet" href="../CSS/analytics.css">
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="container">
+    <nav class="sidebar" id="sidebar">
+      <h1 class="logo">StudyGen</h1>
+      <ul class="menu">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="schedule.html">Schedule Task</a></li>
+        <li><a href="study-material.html">Study Material</a></li>
+        <li><a href="analytics.html" class="active">Analytics</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
+    </nav>
+
+    <main class="analytics">
+      <header class="analytics-header">
+        <h2>Your Analytics</h2>
+        <p>Track your study progress and performance over time.</p>
+      </header>
+
+      <!-- Stats Overview -->
+      <section class="stats-section">
+        <h3>Overview</h3>
+        <div class="stats-container" id="stats-container">
+          <div class="stat-card">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Progress Chart -->
+      <section class="chart-section">
+        <h3>Task Completion</h3>
+        <div class="chart-wrapper">
+          <canvas id="progress-chart" width="300" height="300"></canvas>
+          <div id="progress-legend" class="legend"></div>
+        </div>
+      </section>
+
+      <!-- Time Spent Chart -->
+      <section class="chart-section">
+        <h3>Time Spent by Subject</h3>
+        <div class="chart-wrapper">
+          <canvas id="time-chart" width="600" height="300"></canvas>
+        </div>
+      </section>
+
+      <!-- Subject Breakdown -->
+      <section class="breakdown-section">
+        <h3>Subject Breakdown</h3>
+        <div id="subject-breakdown" class="breakdown-container">
+          <p>No data available</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../Javascript/auth.js"></script>
+  <script src="../Javascript/analytics.js"></script>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
