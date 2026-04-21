@@ -53,7 +53,7 @@ A complete web application for managing your study schedules, tracking progress,
 ## 📁 File Structure
 
 ```
-Hackathon/
+WEBAPP/
 ├── index.html                      # Entry point
 ├── CSS/
 │   ├── login.css                  # Login/Register styling
