@@ -104,7 +104,7 @@ body {
 .sidebar .menu a:hover {
     background-color: rgba(59, 130, 246, 0.1);
     color: var(--text-primary);
-    padding-left: 20px;
+    transform: translateX(4px);
 }
 
 .sidebar .menu a.active {
@@ -128,14 +128,13 @@ body {
 
 /* Dashboard Header */
 .dashboard-header {
-    margin-top: 0;
+    padding-top: 10px;   /* restores breathing room removed by the global * reset */
     margin-bottom: 30px;
 }
 
 .dashboard-header h2 {
     font-size: 2.2rem;
     color: var(--accent-primary);
-    margin-top: 0;
     margin-bottom: 8px;
     font-weight: 600;
 }
@@ -143,7 +142,6 @@ body {
 .dashboard-header p {
     color: var(--text-secondary);
     font-size: 1rem;
-    margin: 0;
 }
 
 /* ===================================
@@ -586,67 +584,6 @@ body {
     background-color: var(--accent-primary);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        max-height: 0;
-        overflow: hidden;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        right: 0;
-        z-index: 999;
-        transition: max-height 0.3s ease;
-    }
-
-    .sidebar.active {
-        max-height: 400px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .dashboard {
-        padding: 20px;
-        flex: 1;
-    }
-
-    .dashboard-header h2 {
-        font-size: 1.8rem;
-    }
-
-    .dashboard section {
-        padding: 15px;
-        margin-bottom: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .dashboard {
-        padding: 15px;
-    }
-
-    .dashboard-header h2 {
-        font-size: 1.4rem;
-    }
-
-    .dashboard section {
-        padding: 12px;
-    }
-
-    .task-item {
-        padding: 10px;
-    }
-}
-
 /* ===================================
    RESPONSIVE DESIGN
    =================================== */
@@ -688,11 +625,17 @@ body {
     }
 
     .dashboard {
-        padding-top: 60px;
+        /* padding-top accounts for the fixed menu-toggle button */
+        padding: 60px 20px 20px;
+        flex: 1;
+    }
+
+    .dashboard-header {
+        padding-top: 0; /* reset the desktop offset — toggle button already adds visual gap */
     }
 
     .dashboard-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     .dashboard section,
@@ -720,8 +663,12 @@ body {
         width: 85%;
     }
 
+    .dashboard {
+        padding: 50px 15px 15px;
+    }
+
     .dashboard-header {
-        padding: 12px;
+        padding-top: 0;
     }
 
     .dashboard-header h2 {
