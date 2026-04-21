@@ -1,8 +1,23 @@
+/* Color Palette */
+:root {
+    --bg-primary: #0f172a;         /* Deep navy */
+    --bg-secondary: #1e293b;       /* Dark slate */
+    --bg-tertiary: #334155;        /* Medium slate */
+    --accent-primary: #3b82f6;     /* Professional blue */
+    --accent-secondary: #8b5cf6;   /* Complementary purple */
+    --success: #10b981;            /* Green */
+    --warning: #f59e0b;            /* Amber */
+    --danger: #ef4444;             /* Red */
+    --text-primary: #f1f5f9;       /* Light text */
+    --text-secondary: #cbd5e1;     /* Muted text */
+    --border-color: #475569;       /* Subtle border */
+}
+
 /* Schedule Task Page */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1e1e2e;
-    color: #f8f8f2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     display: flex;
     height: 100vh;
     overflow: hidden;
@@ -15,54 +30,57 @@ body {
 }
 
 .sidebar {
-    background-color: #282a36;
-    width: 250px;
+    width: 280px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    padding: 20px 10px;
-    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar .logo {
-    font-size: 1.8rem;
-    color: #ff79c6;
-    margin-bottom: 30px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    padding: 24px 16px;
     text-align: center;
-    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+    letter-spacing: 0.5px;
 }
 
 .sidebar .menu {
     list-style: none;
-    width: 100%;
     flex: 1;
+    padding: 12px 8px;
 }
 
 .sidebar .menu li {
-    margin: 10px 0;
+    margin: 4px 0;
 }
 
 .sidebar .menu a {
-    display: block;
-    padding: 12px 15px;
-    color: #f8f8f2;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: var(--text-secondary);
     text-decoration: none;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    font-weight: 500;
     font-size: 0.95rem;
 }
 
 .sidebar .menu a:hover {
-    background-color: #44475a;
-    color: #ff79c6;
-    padding-left: 20px;
+    background-color: var(--bg-tertiary);
+    color: var(--accent-primary);
 }
 
 .sidebar .menu a.active {
-    background-color: #ff79c6;
-    color: #282a36;
-    font-weight: bold;
+    background-color: var(--accent-primary);
+    color: white;
+    font-weight: 600;
 }
 
 .schedule-task {
@@ -71,7 +89,7 @@ body {
     flex-direction: column;
     padding: 30px;
     overflow-y: auto;
-    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d47 100%);
+    background-color: var(--bg-primary);
 }
 
 .dashboard-header {
@@ -80,28 +98,30 @@ body {
 
 .dashboard-header h2 {
     font-size: 2.2rem;
-    color: #ff79c6;
+    color: var(--accent-primary);
     margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .dashboard-header p {
-    color: #b0b0b0;
+    color: var(--text-secondary);
     font-size: 1rem;
 }
 
 .task-form {
-    background-color: #323646;
+    background-color: var(--bg-secondary);
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid #44475a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
 }
 
 .task-form h3 {
-    color: #ff79c6;
+    color: var(--accent-primary);
     margin-bottom: 20px;
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
 #add-task-form {
@@ -115,7 +135,7 @@ body {
 }
 
 .form-group label {
-    color: #f8f8f2;
+    color: var(--text-primary);
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 0.95rem;
@@ -125,10 +145,10 @@ body {
 .form-group textarea,
 .form-group select {
     padding: 12px;
-    background-color: #44475a;
-    border: 2px solid #555869;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    color: #f8f8f2;
+    color: var(--text-primary);
     font-size: 1rem;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -138,39 +158,42 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #ff79c6;
-    background-color: #555869;
+    border-color: var(--accent-primary);
+    background-color: var(--bg-secondary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .btn-add-task {
     padding: 12px 20px;
-    background: linear-gradient(135deg, #ff79c6 0%, #f1fa8c 100%);
-    color: #282a36;
+    background: var(--accent-primary);
+    color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-add-task:hover {
+    background: #2563eb;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 121, 198, 0.4);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
 }
 
 .task-list {
-    background-color: #323646;
+    background-color: var(--bg-secondary);
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid #44475a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
 }
 
 .task-list h3 {
-    color: #ff79c6;
+    color: var(--accent-primary);
     margin-bottom: 20px;
     font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .task-grid {
@@ -180,23 +203,23 @@ body {
 }
 
 .task-card {
-    background-color: #44475a;
+    background-color: var(--bg-tertiary);
     padding: 20px;
     border-radius: 10px;
-    border: 2px solid #555869;
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     position: relative;
 }
 
 .task-card:hover {
-    border-color: #ff79c6;
+    border-color: var(--accent-primary);
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 121, 198, 0.2);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
 }
 
 .task-card.completed {
     opacity: 0.7;
-    border-color: #50fa7b;
+    border-color: var(--success);
 }
 
 .task-card-header {
@@ -207,7 +230,7 @@ body {
 }
 
 .task-card-header h3 {
-    color: #f8f8f2;
+    color: var(--text-primary);
     font-size: 1.1rem;
     margin: 0;
     word-break: break-word;
@@ -221,28 +244,28 @@ body {
 }
 
 .task-priority.high {
-    background-color: #ff5555;
-    color: #fff;
+    background-color: var(--danger);
+    color: white;
 }
 
 .task-priority.medium {
-    background-color: #f1fa8c;
-    color: #282a36;
+    background-color: var(--warning);
+    color: white;
 }
 
 .task-priority.low {
-    background-color: #50fa7b;
-    color: #282a36;
+    background-color: var(--success);
+    color: white;
 }
 
 .task-subject {
-    color: #b0b0b0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 8px 0;
 }
 
 .task-description {
-    color: #d0d0d0;
+    color: var(--text-primary);
     font-size: 0.9rem;
     margin: 8px 0;
     max-height: 50px;
@@ -251,13 +274,13 @@ body {
 }
 
 .task-date {
-    color: #8be9fd;
+    color: var(--accent-primary);
     font-size: 0.85rem;
     margin: 8px 0;
 }
 
 .task-time {
-    color: #b0b0b0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     margin: 8px 0;
 }
@@ -281,33 +304,33 @@ body {
 }
 
 .btn-edit {
-    background-color: #8be9fd;
-    color: #282a36;
+    background-color: var(--accent-primary);
+    color: white;
     font-weight: bold;
 }
 
 .btn-edit:hover {
-    background-color: #50fa7b;
+    background-color: #2563eb;
 }
 
 .btn-toggle {
-    background-color: #50fa7b;
-    color: #282a36;
+    background-color: var(--success);
+    color: white;
     font-weight: bold;
 }
 
 .btn-toggle:hover {
-    background-color: #8be9fd;
+    background-color: #059669;
 }
 
 .btn-delete {
-    background-color: #ff5555;
-    color: #fff;
+    background-color: var(--danger);
+    color: white;
     font-weight: bold;
 }
 
 .btn-delete:hover {
-    background-color: #ff79c6;
+    background-color: #dc2626;
 }
 
 .menu-toggle {
@@ -323,7 +346,7 @@ body {
 
 .no-tasks {
     text-align: center;
-    color: #b0b0b0;
+    color: var(--text-secondary);
     padding: 30px;
     grid-column: 1 / -1;
 }
