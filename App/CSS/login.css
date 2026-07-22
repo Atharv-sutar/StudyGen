@@ -248,7 +248,8 @@ body {
 }
 
 .modal-content {
-  background: #ffffff;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -256,6 +257,7 @@ body {
   max-width: 450px;
   position: relative;
   animation: slideUp 0.3s ease;
+  border: 1px solid var(--border-color);
 }
 
 @keyframes slideUp {
@@ -270,7 +272,7 @@ body {
 }
 
 .modal-content h2 {
-  color: #333;
+  color: var(--accent-primary);
   margin-bottom: 25px;
   text-align: center;
 }
@@ -287,7 +289,7 @@ body {
 }
 
 .close:hover {
-  color: #333;
+  color: var(--accent-primary);
 }
 
 /* Responsive Design */

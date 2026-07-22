@@ -219,6 +219,53 @@ body {
     box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
 }
 
+.material-videos {
+    margin-top: 10px;
+}
+
+.material-videos ul {
+    margin: 6px 0 0 18px;
+}
+
+.video-field {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+.video-field .video-url {
+    flex: 1 1 50%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.video-field .video-title {
+    flex: 1 1 40%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Material detail modal styles reuse .modal/.modal-content; tweak inner layout */
+#material-detail-modal .modal-content {
+    max-width: 640px;
+}
+
+#material-detail-modal #detail-videos button {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+#material-detail-modal #detail-desc {
+    margin-top: 8px;
+}
+
 .material-header {
     display: flex;
     justify-content: space-between;
@@ -364,5 +411,59 @@ body {
 
     .dashboard-header h2 {
         font-size: 1.8rem;
+    }
+}
+
+/* Progress modal (dark themed) */
+.progress-modal.modal {
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-modal .modal-content {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 24px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 420px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.progress-modal .modal-content h3 {
+    margin: 0 0 12px 0;
+    color: var(--accent-primary);
+}
+
+.progress-modal .close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 1.6rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.progress-modal .form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+@media (max-width: 480px) {
+    .progress-modal .modal-content {
+        padding: 16px;
     }
 }

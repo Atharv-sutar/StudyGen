@@ -5,6 +5,9 @@ class TaskManager {
     this.tasks = this.currentUser?.tasks || [];
     this.init();
   }
+  
+  // expose for inline handlers/debugging
+  // (window.taskManager will be set after instantiation in DOMContentLoaded)
 
   init() {
     // Ensure auth is properly loaded
@@ -94,6 +97,7 @@ class TaskManager {
       e.preventDefault();
 
       const task = {
+        id: Date.now(),
         title: document.getElementById('task-title').value,
         subject: document.getElementById('task-subject').value,
         description: document.getElementById('task-description').value,
@@ -105,7 +109,8 @@ class TaskManager {
 
       const editIndex = form.dataset.editIndex;
       if (editIndex !== undefined) {
-        this.tasks[editIndex] = task;
+        // preserve existing id/completed flags when updating
+        this.tasks[editIndex] = { ...this.tasks[editIndex], ...task };
         delete form.dataset.editIndex;
         document.querySelector('.btn-add-task').textContent = 'Add Task';
       } else {
@@ -146,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     auth.currentUser = storedUser;
   }
   taskManager = new TaskManager();
+  window.taskManager = taskManager;
 });
 
 if (document.readyState !== 'loading') {
@@ -157,4 +163,5 @@ if (document.readyState !== 'loading') {
     auth.currentUser = storedUser;
   }
   taskManager = new TaskManager();
+  window.taskManager = taskManager;
 }

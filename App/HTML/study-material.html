@@ -35,9 +35,21 @@
           </div>
           
           <div class="form-group">
-            <label for="material-link">Link to Google Drive or Resource</label>
-            <input type="url" id="material-link" placeholder="https://drive.google.com/... or https://..." required>
-            <small style="color: #999; display: block; margin-top: 5px;">Paste your Google Drive link or any study material URL</small>
+            <label for="material-link">Website / Resource Link (optional)</label>
+            <input type="url" id="material-link" placeholder="https://... (optional)">
+            <small style="color: #999; display: block; margin-top: 5px;">Optional website or resource link related to the material (visible when editing).</small>
+          </div>
+
+          <div class="form-group">
+            <label for="material-description">Description (optional)</label>
+            <textarea id="material-description" placeholder="Add notes or a short description..." rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>YouTube Videos</label>
+            <div id="video-list"></div>
+            <button type="button" id="add-video-btn" class="btn-small" style="margin-top:8px;">Add YouTube Video</button>
+            <small style="color: #999; display: block; margin-top: 5px;">Add one or more YouTube links. Provide an optional title for each video; titles are shown on the card while links are only visible when editing.</small>
           </div>
 
           <button type="submit" class="btn-add-material">Add Material</button>
@@ -50,6 +62,20 @@
           <p class="no-materials">No materials added yet. Add one above!</p>
         </div>
       </section>
+      
+      <!-- Material Detail Modal -->
+      <div id="material-detail-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close" id="material-detail-close">&times;</span>
+          <h3 id="detail-title">Material Title</h3>
+          <p id="detail-desc" style="color:var(--text-secondary)"></p>
+          <div id="detail-videos"></div>
+          <div id="detail-links" style="margin-top:12px;"></div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;">
+            <button id="detail-close-btn" class="btn-small">Close</button>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
   <script src="../Javascript/auth.js"></script>

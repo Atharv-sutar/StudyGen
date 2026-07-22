@@ -3,6 +3,8 @@ class Dashboard {
   constructor() {
     this.currentUser = auth.getCurrentUser();
     this.sortBy = 'date'; // default sort
+    // expose for inline access and event handlers
+    window.dashboard = this;
     this.init();
   }
 
@@ -85,17 +87,61 @@ class Dashboard {
     sortedTasks.slice(0, 5).forEach(task => {
       const li = document.createElement('li');
       li.className = `task-item ${task.completed ? 'completed' : ''}`;
-      li.innerHTML = `
-        <div class="task-header">
-          <strong>${task.title}</strong>
-          <span class="task-status">${task.completed ? '✓ Completed' : 'Pending'}</span>
-        </div>
-        <p class="task-subject">Subject: ${task.subject}</p>
-        <p class="task-priority">Priority: <span class="priority-${task.priority.toLowerCase()}">${task.priority}</span></p>
-        <p class="task-date">Due: ${new Date(task.dueDate).toLocaleDateString()}</p>
-      `;
+
+      const header = document.createElement('div');
+      header.className = 'task-header';
+      header.innerHTML = `<strong>${task.title}</strong>`;
+
+      const status = document.createElement('span');
+      status.className = 'task-status';
+      status.textContent = task.completed ? '✓ Completed' : 'Pending';
+      header.appendChild(status);
+
+      li.appendChild(header);
+
+      const subj = document.createElement('p');
+      subj.className = 'task-subject';
+      subj.textContent = `Subject: ${task.subject}`;
+      li.appendChild(subj);
+
+      const pr = document.createElement('p');
+      pr.className = 'task-priority';
+      pr.innerHTML = `Priority: <span class="priority-${task.priority.toLowerCase()}">${task.priority}</span>`;
+      li.appendChild(pr);
+
+      const dt = document.createElement('p');
+      dt.className = 'task-date';
+      dt.textContent = `Due: ${new Date(task.dueDate).toLocaleDateString()}`;
+      li.appendChild(dt);
+
+      const actions = document.createElement('div');
+      actions.className = 'task-actions';
+      const btn = document.createElement('button');
+      btn.className = 'btn-small btn-toggle';
+      btn.textContent = task.completed ? 'Undo' : 'Complete';
+      btn.addEventListener('click', () => this.toggleTaskCompleteById(task.id));
+      actions.appendChild(btn);
+      li.appendChild(actions);
+
       taskList.appendChild(li);
     });
+  }
+
+  toggleTaskCompleteById(id) {
+    // sync currentUser
+    const current = auth.getCurrentUser();
+    if (!current) return;
+    const tasks = current.tasks || [];
+    const idx = tasks.findIndex(t => t.id === id);
+    if (idx === -1) return;
+    tasks[idx].completed = !tasks[idx].completed;
+    // persist
+    auth.updateUserData({ tasks });
+    // refresh local view
+    this.currentUser = auth.getCurrentUser();
+    this.loadTasks();
+    this.loadProgress();
+    this.loadSubjectProgress();
   }
 
   loadProgress() {
